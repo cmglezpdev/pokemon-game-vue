@@ -10,8 +10,7 @@ import PokemonPictures from '@/components/PokemonPicture.vue';
 import PokemonOptions from '@/components/PokemonOptions.vue';
 import getPokemonOptions from '@/helpers/getPokemonOptions';
 
-console.log( getPokemonOptions() );
-
+console.table(getPokemonOptions());
 
 export default {
     name: "Page",
