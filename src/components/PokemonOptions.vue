@@ -1,4 +1,3 @@
-import PokemonOptions from '@/components/PokemonOptions.vue';
 <template>
   <div class="options-container">
     <ul>

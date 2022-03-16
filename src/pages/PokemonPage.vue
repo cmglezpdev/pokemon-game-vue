@@ -1,31 +1,39 @@
 <template>
-    <h1>Quien es este pokemon?</h1>
-    <PokemonPictures :pokemonId="300" :showPokemon="true"/>
-    <PokemonOptions :pokemons="pokemonArr"/>
+
+    <div v-if="pokemon" >
+        <h1>Quien es este pokemon?</h1>
+        <PokemonPictures :pokemonId="pokemon.id" :showPokemon="showPokemon"/>
+        <PokemonOptions :pokemons="pokemonArr"/>
+    </div>
+    <h1 v-else>
+        Espere por favor...
+    </h1>
 </template>
 
 <script>
 
 import PokemonPictures from '@/components/PokemonPicture.vue';
 import PokemonOptions from '@/components/PokemonOptions.vue';
-import getPokemonOptions from '@/helpers/getPokemonOptions';
+import getPokemonOptions, { getRandomNumber } from '@/helpers/getPokemonOptions';
 
 export default {
-    name: "Page",
     components: {
         PokemonPictures, 
         PokemonOptions
     },
     data() {
         return {
-            pokemonArr: []
+            pokemonArr: [],
+            pokemon: null,
+            showPokemon: false
         }
     },
-    methods: {
+    methods: { 
         async mixPokemonArr() {
             this.pokemonArr = await getPokemonOptions();
-        
-            console.table(this.pokemonArr);
+
+            const rndInt = getRandomNumber(0, 3);
+            this.pokemon = this.pokemonArr[ rndInt ];
         }
     },
     // LifeCycle Compoments

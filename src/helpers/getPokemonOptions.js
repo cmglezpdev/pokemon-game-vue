@@ -25,7 +25,7 @@ const getPokemonsOptions = async () => {
 
 // Helps
 
-const getRandomNumber = ( minValue, maxValue ) => {
+export const getRandomNumber = ( minValue, maxValue ) => {
     return Math.floor( Math.random() * ( maxValue - minValue + 1) + minValue );
 }
 
