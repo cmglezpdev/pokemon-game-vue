@@ -10,6 +10,12 @@
             :pokemons="pokemonArr"
             @selection="checkAnswer($event)"
         />
+        <template v-if="showAnswer">
+            <h2 class="fade-in">{{ message }}</h2>
+            <button @click="newGame">
+                New Game
+            </button>
+        </template>
     </div>
     <h1 v-else>
         Espere por favor...
@@ -31,7 +37,9 @@ export default {
         return {
             pokemonArr: [],
             pokemon: null,
-            showPokemon: false
+            showPokemon: false,
+            showAnswer: false,
+            message: ""
         }
     },
     methods: { 
@@ -41,9 +49,20 @@ export default {
             const rndInt = getRandomNumber(0, 3);
             this.pokemon = this.pokemonArr[ rndInt ];
         },
-        checkAnswer( pokemonID ) {
-            if(pokemonID == this.pokemon.id)
-                this.showPokemon = true;
+        checkAnswer( selectedId ) {
+            this.showPokemon = true;
+            this.showAnswer = true;
+
+            if(selectedId == this.pokemon.Id) 
+                this.message = `Correcto, ${ this.pokemon.name }`;
+            else
+                this.message = `Oops, era ${ this.pokemon.name }`;
+        },
+        newGame() {
+            this.showPokemon = this.showAnswer = false;
+            this.pokemonArr = [];
+            this.pokemon = null;
+            this.mixPokemonArr();
         }
     },
     // LifeCycle Compoments
