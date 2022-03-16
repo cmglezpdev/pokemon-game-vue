@@ -2,8 +2,14 @@
 
     <div v-if="pokemon" >
         <h1>Quien es este pokemon?</h1>
-        <PokemonPictures :pokemonId="pokemon.id" :showPokemon="showPokemon"/>
-        <PokemonOptions :pokemons="pokemonArr"/>
+        <PokemonPictures 
+            :pokemonId="pokemon.id" 
+            :showPokemon="showPokemon"
+        />
+        <PokemonOptions 
+            :pokemons="pokemonArr"
+            @selection="checkAnswer($event)"
+        />
     </div>
     <h1 v-else>
         Espere por favor...
@@ -34,6 +40,10 @@ export default {
 
             const rndInt = getRandomNumber(0, 3);
             this.pokemon = this.pokemonArr[ rndInt ];
+        },
+        checkAnswer( pokemonID ) {
+            if(pokemonID == this.pokemon.id)
+                this.showPokemon = true;
         }
     },
     // LifeCycle Compoments
