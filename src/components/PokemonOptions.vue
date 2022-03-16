@@ -35,6 +35,7 @@ li {
   border: 1px solid rgba(0, 0, 0, 2);
   cursor: pointer;
   margin-bottom: 10px;
+  padding: 3px;
   width: 250px;
 }
 

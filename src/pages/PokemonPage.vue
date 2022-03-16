@@ -71,3 +71,20 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+
+button {
+    border: none;
+    background-color: rgb(60, 196, 60);
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+button:hover {
+     background-color: rgb(32, 206, 32);
+}
+
+</style>
