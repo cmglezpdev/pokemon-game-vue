@@ -1,10 +1,10 @@
-
+import pokemonApi from '@/api/pokemonApi';
 
 
 const getPokemonsOptions = () => {
     
-    PokemonsID = getRandomNumber();
-    PokemonsName = getNamePokemons(PokemonsID);
+    const PokemonsID = getRandomPokemons();
+    const PokemonsName = getNamePokemons(PokemonsID);
     
 }
 
@@ -15,7 +15,7 @@ const getRandomNumber = ( minValue, maxValue ) => {
 const getRandomPokemons = () => {
     
     let pokemonsArr = new Array();
-    for(let i = 1; i <= 4; i ++) {
+    for(let i = 0; i < 4; i ++) {
         const randomNumber = getRandomNumber(1, 650);
         pokemonsArr.push(randomNumber);
     }
@@ -23,10 +23,14 @@ const getRandomPokemons = () => {
     return pokemonsArr;
 }
 
-const getNamePokemons = ( pokemonsID = [] ) => {
+const getNamePokemons = async ( pokemonsID = [] ) => {
 
     let pokemonsName = new Array();
     
+    for(let i = 0; i < 4; i ++) {
+        const pokemon = await pokemonApi.get(`/${ pokemonsID[i] }`);
+        console.log(pokemon);
+    }
 }
 
 export default getPokemonsOptions
