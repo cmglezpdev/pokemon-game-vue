@@ -5,8 +5,13 @@
 </template>
 
 <script>
-    import PokemonPictures from '@/components/PokemonPicture.vue';
-    import PokemonOptions from '@/components/PokemonOptions.vue';
+
+import PokemonPictures from '@/components/PokemonPicture.vue';
+import PokemonOptions from '@/components/PokemonOptions.vue';
+import getPokemonOptions from '@/helpers/getPokemonOptions';
+
+console.log( getPokemonOptions() );
+
 
 export default {
     name: "Page",
